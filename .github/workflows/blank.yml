@@ -6,13 +6,12 @@ on:
       - main
 
 jobs:
-  example-job:
+  build:
     runs-on: ubuntu-latest
     env:
-      VAR1: "Hello"
+      GREETING: "Hello"
+      TARGET: "World"
+      MESSAGE: "${{ env.GREETING }}, ${{ env.TARGET }}!"
     steps:
-      - name: Define VAR2
-        run: echo "VAR2=${VAR1} World" >> $GITHUB_ENV
-
-      - name: Show VAR2
-        run: echo "VAR2 is $VAR2"
+      - name: Display Message
+        run: echo "$MESSAGE"
